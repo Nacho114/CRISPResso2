@@ -980,7 +980,7 @@ def normalize_name(name, fastq_r1, fastq_r2, bam_input):
         return clean_name
 
 
-def main():
+def main(cmd_args):
 
     def print_stacktrace_if_debug():
         debug_flag = False
@@ -1002,7 +1002,9 @@ def main():
         print(header)
 
         arg_parser = CRISPRessoShared.getCRISPRessoArgParser()
-        args = arg_parser.parse_args()
+        args = arg_parser.parse_args(cmd_args)
+        args.suppress_plots = True
+        args.suppress_report = True
 
         CRISPRessoShared.set_console_log_level(logger, args.verbosity, args.debug)
 
@@ -4710,7 +4712,16 @@ def main():
             CRISPRessoShared.zip_results(OUTPUT_DIRECTORY)
 
         info('Analysis Complete!', {'percent_complete': 100})
-        print(CRISPRessoShared.get_crispresso_footer())
+        # print(CRISPRessoShared.get_crispresso_footer())
+        
+        run_info = {
+                'class_counts_order': class_counts_order,
+                'class_counts': class_counts,
+                'ref_names': ref_names,
+                'N_TOTAL': N_TOTAL,
+            }
+
+        return run_info
 
         sys.exit(0)
 
