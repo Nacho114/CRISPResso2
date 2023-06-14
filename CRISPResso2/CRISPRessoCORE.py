@@ -127,7 +127,7 @@ import matplotlib.gridspec as gridspec
 
 pd=check_library('pandas')
 np=check_library('numpy')
-check_program('flash')
+# check_program('flash')
 
 #start = time.time()
 sns=check_library('seaborn')

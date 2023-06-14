@@ -189,7 +189,7 @@ def getCRISPRessoArgParser(parserTitle="CRISPResso Parameters", requiredParams={
     parser.add_argument('--trimmomatic_options_string', type=str,
                         help='Override options for Trimmomatic, e.g. "ILLUMINACLIP:/data/NexteraPE-PE.fa:0:90:10:0:true"',
                         default='')
-    parser.add_argument('--flash_command', type=str, help='Command to run flash', default='flash')
+    parser.add_argument('--flash_command', type=str, help='Command to run flash', default='~/.thot_crispresso/flash/flash')
     parser.add_argument('--min_paired_end_reads_overlap', type=int,
                         help='Parameter for the FLASH read merging step. Minimum required overlap length between two reads to provide a confident overlap. ',
                         default=10)
